@@ -19,7 +19,7 @@ func getIconForCategory(category string) string {
 	case strings.Contains(lowerCategory, "python"):
 		return "/static/assets/icons/python.svg"
 	case strings.Contains(lowerCategory, "go"):
-		return "/static/assets/icons/go.svg"
+		return "static/assets/icons/golang.svg"
 	case strings.Contains(lowerCategory, "rust"):
 		return "static/assets/icons/rust.png"
 	case strings.Contains(lowerCategory, "web"):
