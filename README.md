@@ -30,7 +30,7 @@
 
 ## Screenshots 📸 
 <div class="flex">
-  <img width="400" height="380" alt="Blog Homepage" src="https://github.com/user-attachments/assets/7c325232-87a7-4f5d-a916-09fe87fcb251" />
+  <img width="400" height="360" alt="Home Page View" src="https://github.com/user-attachments/assets/08b92884-2585-40ed-ae17-169f1ad8146c" />
   <img width="400" height="380" alt="Blog Post View" src="https://github.com/user-attachments/assets/dbe014db-6910-4786-bf26-bdc6c3e8e536" />
 </div>
 
