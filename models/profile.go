@@ -1,5 +1,47 @@
 package models
 
+
+type Experience struct {
+        CompanyName string
+        Role        string
+        StartDate   string
+        EndDate     string
+        Description string
+}
+
+type Skill struct {
+        Name        string
+        Proficiency string
+}
+
+type Language struct {
+        Name        string
+        Proficiency string
+}
+
+type Interest struct {
+        Name string
+}
+
+type Education struct {
+        SchoolName   string
+        Degree       string
+        FieldOfStudy string
+}
+
+type Profile struct {
+        Name        string
+        Title       string
+        Bio         string
+        AvatarURL   string
+        Educations  []Education
+        Experiences []Experience
+        Skills      []Skill
+        Languages   []Language
+        Interests   []Interest
+}
+
+
 var MyProfile = Profile{
         Name:      "Keith Thomson",
         Title:     "Software Engineer - Cloud Solutions Architect",
@@ -58,42 +100,4 @@ var MyProfile = Profile{
         },
 }
 
-type Experience struct {
-        CompanyName string
-        Role        string
-        StartDate   string
-        EndDate     string
-        Description string
-}
 
-type Skill struct {
-        Name        string
-        Proficiency string
-}
-
-type Language struct {
-        Name        string
-        Proficiency string
-}
-
-type Interest struct {
-        Name string
-}
-
-type Education struct {
-        SchoolName   string
-        Degree       string
-        FieldOfStudy string
-}
-
-type Profile struct {
-        Name        string
-        Title       string
-        Bio         string
-        AvatarURL   string
-        Educations  []Education
-        Experiences []Experience
-        Skills      []Skill
-        Languages   []Language
-        Interests   []Interest
-}
