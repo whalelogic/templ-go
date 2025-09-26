@@ -2,9 +2,12 @@ package main
 
 import (
 	"log"
+	"sort"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/whalerapi/templ-go/handlers"
+	"github.com/whalerapi/templ-go/models"
+	"github.com/whalerapi/templ-go/services"
 	"github.com/whalerapi/templ-go/templates"
 )
 
@@ -12,10 +15,34 @@ import (
 //		c.Set("Content-Type", "text/html")
 //		return component.Render(c.Context(), c.Response().BodyWriter())
 //	}
+
+var posts []models.Post
+
 func main() {
 
+	// For API access to all posts
+	// could be cached in memory at some point if needed
+
+	// TODO add pagination
+	// TODO add filtering by tag, category, date, etc.
+	// TODO add search
+	// Load posts from google cloud storage using API
+
+	all_posts, err := services.GetAllPosts()
+
+	if err != nil {
+		log.Fatalf("failed to get posts: %v", err)
+	}
+	if all_posts != nil {
+		log.Printf("Loaded %d posts\n", len(all_posts))
+	} else {
+		log.Println("No posts found")
+	}
+
+	posts = append(posts, all_posts...)
+
 	app := fiber.New(fiber.Config{
-		ServerHeader: "Whaler-API",
+		ServerHeader: "WhalerAPI",
 		AppName:      "templ-go",
 	})
 
@@ -23,15 +50,25 @@ func main() {
 	app.Static("/static", "./static")
 	app.Static("/public", "./public")
 
-	app.Get("/ping", func(c *fiber.Ctx) error {
-		return c.SendString("Hello, bird!! 🦤")
+	app.Get("/api", func(c *fiber.Ctx) error {
+		data := posts
+		return c.JSON(data)
 	})
 
 	app.Get("/", func(c *fiber.Ctx) error {
+		// Sort posts by creation date in descending order to get the latest ones first.
+		sort.SliceStable(posts, func(i, j int) bool {
+			return posts[i].CreatedOn > posts[j].CreatedOn
+		})
+
+		// Slice the latest 4 posts.
+		latestPosts := posts
+		if len(posts) > 4 {
+			latestPosts = posts[:4]
+		}
 
 		c.Set("Content-Type", "text/html")
-
-		return templates.IndexPage().Render(c.Context(), c.Response().BodyWriter())
+		return templates.IndexPage(latestPosts).Render(c.Context(), c.Response().BodyWriter())
 	})
 
 	app.Get("/about", handlers.AboutHandler)

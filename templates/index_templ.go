@@ -8,7 +8,9 @@ package templates
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-func IndexPage() templ.Component {
+import "github.com/whalerapi/templ-go/models"
+
+func IndexPage(posts []models.Post) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -41,13 +43,23 @@ func IndexPage() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"bg-white/60 backdrop-blur-lg rounded-2xl shadow-lg border border-slate-200 overflow-hidden\"><div class=\"md:flex\"><div class=\"md:flex-shrink-0 p-8 flex items-center justify-center\"><div class=\"h-32 w-32 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center shadow-md\"><span class=\"text-white text-4xl font-bold\">W</span></div></div><div class=\"p-8 pr-12\"><div class=\"uppercase tracking-wide text-sm text-indigo-600 font-bold\">Keith Thomson</div><h1 class=\"mt-1 text-3xl font-bold text-slate-900\">Cloud Engineer - Programmer</h1><p class=\"mt-4 text-slate-600\">Welcome to my personal blog. I write about Go, web development, and other things I'm passionate about. Stick around to read my latest thoughts.</p></div></div></div><h2 class=\"text-3xl font-bold mt-16 mb-8 text-slate-900\">From the blog</h2><div class=\"grid grid-cols-1 md:grid-cols-2 gap-8\"><div class=\"bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 border border-slate-200\"><h3 class=\"text-xl font-bold text-slate-900\">My First Post</h3><p class=\"text-slate-600 mt-2\">This is a summary of the first blog post. It's where I introduce myself and my goals for this blog.</p><a href=\"#\" class=\"text-indigo-600 hover:text-indigo-800 font-semibold mt-4 inline-block\">Read more &rarr;</a></div><div class=\"bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 border border-slate-200\"><h3 class=\"text-xl font-bold text-slate-900\">Exploring Templ</h3><p class=\"text-slate-600 mt-2\">A deep dive into the templ library for Go, and why I chose it for this blog.</p><a href=\"#\" class=\"text-indigo-600 hover:text-indigo-800 font-semibold mt-4 inline-block\">Read more &rarr;</a></div></div>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"bg-white/60 backdrop-blur-lg rounded-2xl shadow-lg border border-slate-200 overflow-hidden\"><div class=\"md:flex\"><div class=\"md:flex-shrink-0 p-8 flex items-center justify-center\"><div class=\"h-32 w-32 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center shadow-md\"><img class=\"h-32 w-40 object-cover rounded-xl border-4 border-white shadow-sm\" src=\"/static/happywhaleman.png\" alt=\"Profile Picture\"></div></div><div class=\"p-8 pr-12\"><div class=\"uppercase tracking-wide text-sm text-indigo-600 font-bold\">Keith Thomson</div><h1 class=\"mt-1 text-3xl font-bold text-slate-900\">Cloud Engineer</h1><span><a href=\"https://www.github.com/whalerapi\">WhalerAPI - Github</a></span><p class=\"mt-4 text-slate-600\">Welcome! This is my space to explore the worlds of programming, cloud computing, AI, Machine Learning, and web development. The name of my company — WhalerAPI, is a nod to my love for the ocean and my hometown's rich maritime history, home to legendary ships like the Charles W. Morgan ⛵. I invite you to read my latest thoughts, and I hope you find this content insightful.</p></div></div></div><h2 class=\"text-3xl font-bold mt-16 mb-8 text-slate-900\">From the blowhole</h2><div class=\"grid grid-cols-1 md:grid-cols-2 gap-8\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			for _, post := range posts {
+				templ_7745c5c3_Err = PostCard(post).Render(ctx, templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = Layout("My Awesome Blog").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = Layout("WhalerAPI").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

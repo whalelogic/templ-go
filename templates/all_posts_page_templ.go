@@ -43,7 +43,7 @@ func AllPostsPage(posts []models.Post) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"container mx-auto px-4\"><h1 class=\"text-4xl font-bold my-8\">Blog Archive</h1>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"container mx-auto px-4\"><img src=\"/static/whalerapi.png\" alt=\"Blog Hero Image\" class=\"w-full h-64 object-cover rounded-lg mb-8\"><h1 class=\"text-4xl font-bold my-8\">Blog Archive</h1><p class=\"text-lg opacity-90 mb-8\">A List of All Blog Posts</p><div class=\"mb-8\"><input type=\"text\" placeholder=\"Search posts...\" class=\"border border-gray-300 rounded-lg py-2 px-4 w-full\"></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -61,7 +61,7 @@ func AllPostsPage(posts []models.Post) templ.Component {
 					var templ_7745c5c3_Var3 templ.SafeURL
 					templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinURLErrs(templ.URL("/blog/" + post.Slug))
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/all_posts_page.templ`, Line: 16, Col: 48}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/all_posts_page.templ`, Line: 21, Col: 48}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 					if templ_7745c5c3_Err != nil {
@@ -74,7 +74,7 @@ func AllPostsPage(posts []models.Post) templ.Component {
 					var templ_7745c5c3_Var4 string
 					templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(post.Title)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/all_posts_page.templ`, Line: 17, Col: 20}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/all_posts_page.templ`, Line: 22, Col: 20}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 					if templ_7745c5c3_Err != nil {
@@ -87,7 +87,7 @@ func AllPostsPage(posts []models.Post) templ.Component {
 					var templ_7745c5c3_Var5 string
 					templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(post.Summary)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/all_posts_page.templ`, Line: 20, Col: 50}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/all_posts_page.templ`, Line: 25, Col: 50}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 					if templ_7745c5c3_Err != nil {
@@ -100,7 +100,7 @@ func AllPostsPage(posts []models.Post) templ.Component {
 					var templ_7745c5c3_Var6 templ.SafeURL
 					templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinURLErrs(templ.URL("/blog/" + post.Slug))
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/all_posts_page.templ`, Line: 21, Col: 47}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/all_posts_page.templ`, Line: 26, Col: 47}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 					if templ_7745c5c3_Err != nil {
@@ -126,4 +126,56 @@ func AllPostsPage(posts []models.Post) templ.Component {
 	})
 }
 
+// Here is another version with horizontal cards and a small hero section
+// The images for the cards need to be added to the Post model as ImageURL
+
+// templ AllPostsPage(posts []models.Post) {
+//     @Layout("All Posts") {
+//         // --- Smaller Hero Section ---
+//         <div class="bg-gradient-to-r from-blue-600 to-teal-500 py-12 text-white">
+//             <div class="container mx-auto px-4 text-center">
+//                 <h1 class="text-4xl font-bold">Blog Archive</h1>
+//                 <p class="text-lg opacity-90 mt-2">Our latest thoughts on technology and development.</p>
+//             </div>
+//         </div>
+
+//         // --- Two-Column Content Area ---
+//         <div class="container mx-auto px-4 py-12">
+//             if len(posts) == 0 {
+//                 <p class="text-center text-gray-600">No posts found.</p>
+//             } else {
+//                 // --- Grid for Horizontal Cards ---
+//                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+//                     for _, post := range posts {
+//                         // --- Horizontal Card ---
+//                         <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col md:flex-row transition-shadow duration-300 hover:shadow-xl">
+//                             // Image Section
+//                             <div class="md:w-1/3 flex-shrink-0">
+//                                 // Use post.ImageURL here. Using a placeholder for now.
+//                                 <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=60" alt={ post.Title } class="h-48 w-full object-cover md:h-full"/>
+//                             </div>
+
+//	                            // Text Content Section
+//	                            <div class="p-6 flex flex-col flex-grow">
+//	                                <div>
+//	                                    <h2 class="text-xl font-semibold mb-2">
+//	                                        <a href={ templ.URL("/blog/" + post.Slug) } class="hover:underline text-blue-700">
+//	                                            { post.Title }
+//	                                        </a>
+//	                                    </h2>
+//	                                    <p class="text-gray-600 text-sm mb-4 line-clamp-3">{ post.Summary }</p>
+//	                                </div>
+//	                                <div class="mt-auto">
+//	                                    <a href={ templ.URL("/blog/" + post.Slug) } class="text-blue-600 hover:text-blue-800 font-semibold text-sm">
+//	                                        Read More &rarr;
+//	                                    </a>
+//	                                </div>
+//	                            </div>
+//	                        </div>
+//	                    }
+//	                </div>
+//	            }
+//	        </div>
+//	    }
+//	}
 var _ = templruntime.GeneratedTemplate

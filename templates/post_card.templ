@@ -1,0 +1,37 @@
+package templates
+
+import "github.com/whalerapi/templ-go/models"
+import "strings"
+
+func getIconForCategory(category string) string {
+	// Normalize category name for filename matching
+
+
+	lowerCategory := strings.ToLower(category)
+	switch {
+	case strings.Contains(lowerCategory, "python"):
+		return "/static/assets/icons/python.svg"
+	case strings.Contains(lowerCategory, "go"):
+		return "/static/assets/icons/go.svg"
+	case strings.Contains(lowerCategory, "rust"):
+		return "static/assets/icons/rust.png"
+	case strings.Contains(lowerCategory, "web"):
+		return "static/assets/http.png"
+	case strings.Contains(lowerCategory, "data"):
+		return "/static/analysis.png"
+	case strings.Contains(lowerCategory, "ai"), strings.Contains(lowerCategory, "ethics"):
+		return "/static/assets/icons/ai.svg"
+	default:
+		return "/static/whalerapi.png" // A good default
+	}
+}
+
+templ PostCard(post models.Post) {
+	<a href={ templ.URL("/blog/" + post.Slug) } class="group bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-slate-200 flex items-start space-x-6 hover:scale-105 hover:border-indigo-400">
+		<img src={ getIconForCategory(post.Category) } alt={ post.Category } class="h-12 w-12 flex-shrink-0 opacity-70 group-hover:opacity-100 transition-opacity duration-300"/>
+		<div class="flex-grow">
+			<h3 class="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors duration-300">{ post.Title }</h3>
+			<p class="text-slate-600 mt-2 text-sm">{ post.Summary }</p>
+		</div>
+	</a>
+}
