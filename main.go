@@ -28,19 +28,16 @@ func main() {
 	// TODO add search
 	// Load posts from google cloud storage using API
 
-	all_posts, err := services.GetAllPosts()
-
+	allPosts, err := services.GetAllPosts()
 	if err != nil {
 		log.Fatalf("failed to get posts: %v", err)
 	}
-	if all_posts != nil {
-		log.Printf("Loaded %d posts\n", len(all_posts))
+	if allPosts != nil {
+		log.Printf("Loaded %d posts\n", len(allPosts))
 	} else {
 		log.Println("No posts found")
 	}
-
-	posts = append(posts, all_posts...)
-
+	posts = append(posts, allPosts...)
 	app := fiber.New(fiber.Config{
 		ServerHeader: "WhalerAPI",
 		AppName:      "templ-go",
@@ -76,6 +73,8 @@ func main() {
 	app.Get("/all_posts_page", handlers.HandleAllPosts)
 
 	app.Get("/blog/:slug", handlers.HandlePost)
+
+	app.Get("/resume", handlers.ResumeHandler(models.MyProfile))
 
 	log.Println("Listening on :8080")
 	if err := app.Listen(":8080"); err != nil {

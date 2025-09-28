@@ -7,5 +7,4 @@ import (
 
 func AboutHandler(c *fiber.Ctx) error {
 	c.Set("Content-Type", "text/html")
-	return templates.AboutPage().Render(c.Context(), c.Response().BodyWriter())
-}
+	return templates.AboutPage().Render(c.Context(), c.Response().BodyWriter())} 

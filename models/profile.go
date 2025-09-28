@@ -1,3 +1,4 @@
+// Package models creates structures to hold data or dynamically render data.
 package models
 
 
@@ -70,23 +71,42 @@ var MyProfile = Profile{
                 {
                         CompanyName: "PennyBorne Development LLC",
                         Role:        "Product QA Lead - Content Management System",
-                        StartDate:   "Jan 2022",
-                        EndDate:     "Current",
+                        StartDate:   "Mar 2022",
+                        EndDate:     "Present",
+                        Description: "Developing scalable backend services using Go.",
+                },
+                {
+                        CompanyName: "The Spice and Tea Exchange",
+                        Role:        "Supervisor - Assistant Manager",
+                        StartDate:   "May 2016",
+                        EndDate:     "Oct 2020",
+                        Description: "Coordinating events and promotions to generate sales revenue.",
+               	}, 
+				{
+                        CompanyName: "The Magetti Group LLC",
+                        Role:        "Accounting Clerk",
+                        StartDate:   "Feb 2012",
+                        EndDate:     "Feb 2016",
                         Description: "Developing scalable backend services using Go.",
                 },
                 {
                         CompanyName: "US Army",
-                        Role:        "Infantryman",
+                        Role:        "11B Infantry",
                         StartDate:   "Sep 2007",
                         EndDate:     "Sep 2011",
-                        Description: "Mechanized Infantry, Squad Leader, Served in Iraq 2008-2010",
+                        Description: "Squad Leader - Deployed with 3rd Heavy Brigade Combat Team 🪖, 1st Cavalry Division - Operation Iraqi Freedom November 2008 - January 2010 🎖️🎖️Mosul, Ninevah Province.",
                 },
         },
         Skills: []Skill{
                 {Name: "Go", Proficiency: "Expert"},
                 {Name: "Python", Proficiency: "Advanced"},
-                {Name: "Docker", Proficiency: "Advanced"},
+                {Name: "Bash", Proficiency: "Expert"},
+                {Name: "AWS - Azure - GCP", Proficiency: "Expert"},
+                {Name: "Linux 🐧", Proficiency: "Expert"},
+                {Name: "Docker 🦭", Proficiency: "Advanced"},
                 {Name: "Kubernetes", Proficiency: "Intermediate"},
+                {Name: "Terraform", Proficiency: "Advanced"},
+				
         },
         Languages: []Language{
                 {Name: "English", Proficiency: "Native"},
@@ -96,7 +116,8 @@ var MyProfile = Profile{
         Interests: []Interest{
                 {Name: "Open Source Contribution"},
                 {Name: "Cloud Computing"},
-                {Name: "Traveling"},
+                {Name: "Family time 🐒"},
+                {Name: "Traveling 🛫"},
         },
 }
 
