@@ -13,7 +13,7 @@ templ PostPage(post models.Post) {
 		<article class="max-w-4xl mx-auto px-4">
 		<a href="/" class="text-indigo-600 hover:text-indigo-800 font-semibold p-2">&larr; Home</a>
 			<header class="mb-8">
-				<h1 class="text-4xl font-bold text-slate-900 mb-4">{ post.Title }</h1>
+				<h1 class="text-4xl font-bold text-slate-900 m-4">{ post.Title }</h1>
 				if post.Subtitle != "" {
 					<p class="text-xl text-slate-600 mb-4">{ post.Subtitle }</p>
 				}

@@ -21,8 +21,7 @@ var posts []models.Post
 func main() {
 
 	// For API access to all posts
-	// could be cached in memory at some point if needed
-
+	// could be cached in memory at some point
 	// TODO add pagination
 	// TODO add filtering by tag, category, date, etc.
 	// TODO add search
@@ -58,7 +57,7 @@ func main() {
 			return posts[i].CreatedOn > posts[j].CreatedOn
 		})
 
-		// Slice the latest 4 posts.
+		// Latest 4 posts.
 		latestPosts := posts
 		if len(posts) > 4 {
 			latestPosts = posts[:4]
@@ -69,11 +68,8 @@ func main() {
 	})
 
 	app.Get("/about", handlers.AboutHandler)
-
 	app.Get("/all_posts_page", handlers.HandleAllPosts)
-
 	app.Get("/blog/:slug", handlers.HandlePost)
-
 	app.Get("/resume", handlers.ResumeHandler(models.MyProfile))
 
 	log.Println("Listening on :8080")

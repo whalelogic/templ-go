@@ -13,23 +13,46 @@ import "strings"
 
 func getIconForCategory(category string) string {
 	// Normalize category name for filename matching
-
 	lowerCategory := strings.ToLower(category)
 	switch {
 	case strings.Contains(lowerCategory, "python"):
-		return "/static/assets/icons/python.svg"
-	case strings.Contains(lowerCategory, "go"):
-		return "static/assets/icons/golang.svg"
+		return "/static/python.png"
+	case strings.Contains(lowerCategory, "go"), strings.Contains(lowerCategory, "golang"):
+		return "/static/golang.svg"
 	case strings.Contains(lowerCategory, "rust"):
-		return "static/assets/icons/rust.png"
-	case strings.Contains(lowerCategory, "web"):
-		return "static/assets/http.png"
+		return "/static/rust.png"
+	case strings.Contains(lowerCategory, "http"):
+		return "/static/http.png"
+	case strings.Contains(lowerCategory, "api"):
+		return "/static/rest-api.png"
+	case strings.Contains(lowerCategory, "javascript"), strings.Contains(lowerCategory, "js"):
+		return "/static/javascript.svg"
 	case strings.Contains(lowerCategory, "data"):
-		return "/static/analysis.png"
-	case strings.Contains(lowerCategory, "ai"), strings.Contains(lowerCategory, "ethics"):
-		return "/static/assets/icons/ai.svg"
+		return "/static/mariadb.svg"
+	case strings.Contains(lowerCategory, "ethics"), strings.Contains(lowerCategory, "ai"):
+		return "/static/ethics.png"
+	case strings.Contains(lowerCategory, "google"), strings.Contains(lowerCategory, "gcp"):
+		return "/static/google-cloud.svg"
+	case strings.Contains(lowerCategory, "docker"):
+		return "/static/docker.svg"
+	case strings.Contains(lowerCategory, "kubernetes"), strings.Contains(lowerCategory, "k8s"):
+		return "/static/kubernetes.svg"
+	case strings.Contains(lowerCategory, "aws"), strings.Contains(lowerCategory, "amazon"):
+		return "/static/aws.svg"
+	case strings.Contains(lowerCategory, "flask"):
+		return "/static/flask.svg"
+	case strings.Contains(lowerCategory, "fiber"):
+		return "/static/fiber.svg"
+	case strings.Contains(lowerCategory, "regex"), strings.Contains(lowerCategory, "regexp"):
+		return "/static/regex.svg"
+	case strings.Contains(lowerCategory, "html"):
+		return "/static/html5.svg"
+	case strings.Contains(lowerCategory, "css"):
+		return "/static/css3.svg"
+	case strings.Contains(lowerCategory, "philosophy"):
+		return "/static/socrates-gopher.png"
 	default:
-		return "/static/whalerapi.png" // A good default
+		return "/static/api.png" // A good default
 	}
 }
 
@@ -61,7 +84,7 @@ func PostCard(post models.Post) templ.Component {
 		var templ_7745c5c3_Var2 templ.SafeURL
 		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinURLErrs(templ.URL("/blog/" + post.Slug))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/post_card.templ`, Line: 30, Col: 42}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/post_card.templ`, Line: 52, Col: 42}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 		if templ_7745c5c3_Err != nil {
@@ -74,7 +97,7 @@ func PostCard(post models.Post) templ.Component {
 		var templ_7745c5c3_Var3 string
 		templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(getIconForCategory(post.Category))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/post_card.templ`, Line: 31, Col: 46}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/post_card.templ`, Line: 53, Col: 46}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 		if templ_7745c5c3_Err != nil {
@@ -87,7 +110,7 @@ func PostCard(post models.Post) templ.Component {
 		var templ_7745c5c3_Var4 string
 		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(post.Category)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/post_card.templ`, Line: 31, Col: 68}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/post_card.templ`, Line: 53, Col: 68}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {
@@ -100,7 +123,7 @@ func PostCard(post models.Post) templ.Component {
 		var templ_7745c5c3_Var5 string
 		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(post.Title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/post_card.templ`, Line: 33, Col: 119}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/post_card.templ`, Line: 55, Col: 119}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
@@ -113,7 +136,7 @@ func PostCard(post models.Post) templ.Component {
 		var templ_7745c5c3_Var6 string
 		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(post.Summary)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/post_card.templ`, Line: 34, Col: 56}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/post_card.templ`, Line: 56, Col: 56}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 		if templ_7745c5c3_Err != nil {

@@ -5,24 +5,46 @@ import "strings"
 
 func getIconForCategory(category string) string {
 	// Normalize category name for filename matching
-
-
 	lowerCategory := strings.ToLower(category)
 	switch {
 	case strings.Contains(lowerCategory, "python"):
-		return "/static/assets/icons/python.svg"
-	case strings.Contains(lowerCategory, "go"):
-		return "static/assets/icons/golang.svg"
+		return "/static/python.png"
+	case strings.Contains(lowerCategory, "go"), strings.Contains(lowerCategory, "golang"):
+		return "/static/golang.svg"
 	case strings.Contains(lowerCategory, "rust"):
-		return "static/assets/icons/rust.png"
-	case strings.Contains(lowerCategory, "web"):
-		return "static/assets/http.png"
+		return "/static/rust.png"
+	case strings.Contains(lowerCategory, "http"):
+		return "/static/http.png"
+	case strings.Contains(lowerCategory, "api"):
+		return "/static/rest-api.png"
+	case strings.Contains(lowerCategory, "javascript"), strings.Contains(lowerCategory, "js"):
+		return "/static/javascript.svg"
 	case strings.Contains(lowerCategory, "data"):
-		return "/static/analysis.png"
-	case strings.Contains(lowerCategory, "ai"), strings.Contains(lowerCategory, "ethics"):
-		return "/static/assets/icons/ai.svg"
+		return "/static/mariadb.svg"
+	case strings.Contains(lowerCategory, "ethics"), strings.Contains(lowerCategory, "ai"):
+		return "/static/ethics.png"
+	case strings.Contains(lowerCategory, "google"), strings.Contains(lowerCategory, "gcp"):
+		return "/static/google-cloud.svg"
+	case strings.Contains(lowerCategory, "docker"):
+		return "/static/docker.svg"
+	case strings.Contains(lowerCategory, "kubernetes"), strings.Contains(lowerCategory, "k8s"):
+		return "/static/kubernetes.svg"
+	case strings.Contains(lowerCategory, "aws"), strings.Contains(lowerCategory, "amazon"):
+		return "/static/aws.svg"
+	case strings.Contains(lowerCategory, "flask"):
+		return "/static/flask.svg"
+	case strings.Contains(lowerCategory, "fiber"):
+		return "/static/fiber.svg"
+	case strings.Contains(lowerCategory, "regex"), strings.Contains(lowerCategory, "regexp"):
+		return "/static/regex.svg"
+	case strings.Contains(lowerCategory, "html"):
+		return "/static/html5.svg"
+	case strings.Contains(lowerCategory, "css"):
+		return "/static/css3.svg"
+	case strings.Contains(lowerCategory, "philosophy"):
+		return "/static/socrates-gopher.png"
 	default:
-		return "/static/whalerapi.png" // A good default
+		return "/static/api.png" // A good default
 	}
 }
 
