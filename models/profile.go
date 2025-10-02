@@ -45,7 +45,7 @@ type Profile struct {
 
 var MyProfile = Profile{
         Name:      "Keith Thomson",
-        Title:     "Software Engineer - Cloud Solutions Architect",
+        Title:     "Cloud Solutions Engineer",
         Bio:       "Passionate developer with experience in Go and web development.",
         AvatarURL: "https://gravatar.com/avatar/24289225bb8abcf8cdd1fe4d5d20db4d?s=400&d=robohash&r=x",
         Educations: []Education{
