@@ -18,6 +18,13 @@ templ ResumePage(profile models.Profile) {
 			</div>
 
 			<div>
+				<h2 class="text-3xl font-bold text-slate-800 mb-6 border-b-2 border-indigo-200 pb-2">Professional Summary</h2>
+				<div class="p-4 bg-white/50 rounded-lg border border-slate-200">
+					<p class="text-slate-600">With extensive experience in cloud-native technologies, I specialize in developing robust backend systems using Go and constructing sophisticated data pipelines. My expertise in Python extends to advanced data modeling and in-depth analysis, allowing me to architect and implement scalable, data-intensive applications. I am adept at leveraging the power of modern cloud platforms to deliver high-performance, resilient solutions.</p>
+				</div>
+			</div>
+
+			<div>
 				<h2 class="text-3xl font-bold text-slate-800 mb-6 border-b-2 border-indigo-200 pb-2">Experience</h2>
 				<div class="space-y-8">
 					for _, exp := range profile.Experiences {
@@ -36,12 +43,18 @@ templ ResumePage(profile models.Profile) {
 			<div>
 				<h2 class="text-3xl font-bold text-slate-800 mb-6 border-b-2 border-indigo-200 pb-2">Skills</h2>
 				<div class="flex flex-wrap gap-3">
+
 					for _, skill := range profile.Skills {
 						<span class={ "text-sm font-medium px-4 py-2 rounded-full shadow-sm", getSkillColor(skill.Proficiency) }>
 							{ skill.Name } - <span class="opacity-80">{ skill.Proficiency }</span>
 						</span>
 					}
 				</div>
+				<p align="center">
+				  <a href="https://skillicons.dev">
+				    <img class="mt-8" src="https://skillicons.dev/icons?i=linux,regex,docker,kubernetes,github,bash,alpinejs,nodejs,git,terraform,ansible,pytorch,tensorflow,vscode,postgres,mongodb,dynamodb,fastapi,htmx&theme=dark&perline=8" />
+				  </a>
+				</p>
 			</div>
 
 			<div>
@@ -87,11 +100,13 @@ templ ResumePage(profile models.Profile) {
 func getSkillColor(proficiency string) string {
 	switch proficiency {
 	case "Expert":
-		return "bg-indigo-100 text-indigo-800"
+		return "bg-green-200 text-gray-800"
 	case "Advanced":
 		return "bg-sky-100 text-sky-800"
 	case "Intermediate":
 		return "bg-emerald-100 text-emerald-800"
+    case "Professional":
+        return "bg-green-500 text-gray-100"
 	default:
 		return "bg-slate-100 text-slate-800"
 	}

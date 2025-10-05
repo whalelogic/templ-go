@@ -48,7 +48,7 @@ func PostPage(post models.Post) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<article class=\"max-w-4xl mx-auto px-4\"><a href=\"/\" class=\"text-indigo-600 hover:text-indigo-800 font-semibold p-2\">&larr; Home</a><header class=\"mb-8\"><h1 class=\"text-4xl font-bold text-slate-900 m-4\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<article class=\"max-w-4xl mx-auto px-4\"><a href=\"/all_posts_page\" class=\"text-gray-900 hover:text-indigo-800 font-semibold p-2\">👈 Back</a><header class=\"mb-8\"><h1 class=\"text-4xl font-bold text-slate-900 m-4\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

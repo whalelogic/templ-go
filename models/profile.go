@@ -45,8 +45,8 @@ type Profile struct {
 
 var MyProfile = Profile{
         Name:      "Keith Thomson",
-        Title:     "Cloud Solutions Engineer",
-        Bio:       "Passionate developer with experience in Go and web development.",
+        Title:     "Software and Cloud Solutions Developer",
+        Bio:       "Passionate developer with experience in Go, Information Systems design, and Application development.",
         AvatarURL: "https://gravatar.com/avatar/24289225bb8abcf8cdd1fe4d5d20db4d?s=400&d=robohash&r=x",
         Educations: []Education{
                 {
@@ -55,9 +55,29 @@ var MyProfile = Profile{
                         FieldOfStudy: "Computer Science - Information Systems",
                 },
                 {
-                        SchoolName:   "Connecticut State University",
+                        SchoolName:   "Connecticut State College",
                         Degree:       "Associate of Science",
                         FieldOfStudy: "Cloud Computing & Virtualization",
+                },
+                {
+                        SchoolName:   "Coursera",
+                        Degree:       "Professional Certificate",
+                        FieldOfStudy: "Google Data Analytics",
+                },
+                {
+                        SchoolName:   "Connecticut State College",
+                        Degree:       "Industry Certification",
+                        FieldOfStudy: "Amazon Web Services Cloud Practioner",
+                },
+                {
+                        SchoolName:   "W3 Schools",
+                        Degree:       "Professional Certificate",
+                        FieldOfStudy: "C++ Programming Language",
+                },
+                {
+                        SchoolName:   "Python Institute",
+                        Degree:       "PCEP ",
+                        FieldOfStudy: "Programming Languages",
                 },
         },
         Experiences: []Experience{
@@ -98,14 +118,22 @@ var MyProfile = Profile{
                 },
         },
         Skills: []Skill{
-                {Name: "Go", Proficiency: "Expert"},
-                {Name: "Python", Proficiency: "Advanced"},
+                {Name: "Go Programming Language", Proficiency: "Professional"},
+                {Name: "Python ", Proficiency: "Advanced"},
                 {Name: "Bash", Proficiency: "Expert"},
-                {Name: "AWS - Azure - GCP", Proficiency: "Expert"},
-                {Name: "Linux 🐧", Proficiency: "Expert"},
-                {Name: "Docker 🦭", Proficiency: "Advanced"},
+                {Name: "AWS - Azure - GCP", Proficiency: "Professional"},
+                {Name: "Linux 🐧Operating Systems", Proficiency: "Professional"},
+                {Name: "Docker", Proficiency: "Advanced"},
                 {Name: "Kubernetes", Proficiency: "Intermediate"},
                 {Name: "Terraform", Proficiency: "Advanced"},
+                {Name: "Data Engineering", Proficiency: "Advanced"},
+                {Name: "Application Development", Proficiency: "Advanced"},
+                {Name: "Microservices", Proficiency: "Professional"},
+                {Name: "Cloud Architecture", Proficiency: "Expert"},
+                {Name: "RESTful API", Proficiency: "Expert"},
+                {Name: "Software Design Patterns", Proficiency: "Advanced"},
+                {Name: "IoT", Proficiency: "Advanced"},
+                {Name: "Neural Networks and Machine Learning", Proficiency: "Advanced"},
 				
         },
         Languages: []Language{
