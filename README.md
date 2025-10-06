@@ -112,13 +112,6 @@ go run .
 The server will be running on http://localhost:8080.
 
 
-
-### Screenshots
-
-<img width="764" height="802" alt="Blog Homepage" src="https://github.com/user-attachments/assets/7c325232-87a7-4f5d-a916-09fe87fcb251" />
-
-<img width="764" height="802" alt="Blog Post View" src="https://github.com/user-attachments/assets/dbe014db-6910-4786-bf26-bdc6c3e8e536" />
-
 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
